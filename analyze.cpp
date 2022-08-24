@@ -138,14 +138,14 @@ int main(int argc, char *argv[])
 
     cout << endl << "number of fingerprints:    " << count << endl;
     cout << "number of duplicates:      " << dedup_count << endl;
-    cout << "duplicate-ratio:           " << dedup_ratio << " %" << endl;
+    cout << "dedup-ratio:               " << dedup_ratio << " %" << endl;
 
     ifile.close();
 
     // time measure - finish
     finish = time(NULL);
     duration = (double) (finish - start);
-    cout << endl << "elapsed time:              " << duration << " seconds" << endl << endl;
+    cout << endl << "elapsed time:              " << duration << " seconds" << endl;
 
     // Write result file
     ofstream ofile(ofname);
@@ -153,7 +153,7 @@ int main(int argc, char *argv[])
         ofile << "Input file name:           " << ifname << endl << endl;
         ofile << "number of fingerprints:    " << count << endl;
         ofile << "number of duplicates:      " << dedup_count << endl;
-        ofile << "duplicate-ratio:           " << dedup_ratio << " %" << endl << endl;
+        ofile << "dedup-ratio:               " << dedup_ratio << " %" << endl << endl;
 
         ofile << "elapsed time:              " << duration << " seconds" << endl;
     }
