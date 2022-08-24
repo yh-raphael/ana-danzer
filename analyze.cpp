@@ -82,7 +82,7 @@ int main(int argc, char *argv[])
 
             // cout  << prefix << endl;
             if(strcmp(prefix, "File") == 0) {                       // 1st line-> File name: /home/safdar/dedupAnalyzer/test_dir/random_1M_1K.txt, Size: 1044000000
-                cout << "Just met new file contents!" << endl;
+                // cout << "Just met new file contents!" << endl;
                 break;
             }
 
@@ -108,12 +108,12 @@ int main(int argc, char *argv[])
         // if (umap[f_array[i]] >= 1)
         umap[f_array[i]] ++;
 
-        if (umap[f_array[i]] > 1)
-            cout << i + 1 << "      " << f_array[i] << "   " << umap[f_array[i]] << endl;
+        // if (umap[f_array[i]] > 1)
+        //    cout << i + 1 << "      " << f_array[i] << "   " << umap[f_array[i]] << endl;
     }
 
 /*
-    // Print results (dup_count)
+    // Print results (dedup_count)
     for (int i = 0; i < count; i++)
     {
         cout << n_array[i] << endl;
@@ -125,35 +125,35 @@ int main(int argc, char *argv[])
 */
 
     cout << "[4] Calculating the duplicate-ratio . . ." << endl;
-    int dup_count = 0;
-    double dup_ratio = 0;
+    int dedup_count = 0;
+    double dedup_ratio = 0;
     // Traversing an unordered map
     for (auto x : umap)
     {
         if (x.second != 1) {
-            dup_count += (x.second - 1);
+            dedup_count += (x.second - 1);
         }
     }
-    dup_ratio = dup_count / (double) count;
+    dedup_ratio = (dedup_count / (double) count) * 100;
 
     cout << endl << "number of fingerprints:    " << count << endl;
-    cout << "number of duplicates:      " << dup_count << endl;
-    cout << "duplicate-ratio:           " << dup_ratio << endl;
+    cout << "number of duplicates:      " << dedup_count << endl;
+    cout << "duplicate-ratio:           " << dedup_ratio << " %" << endl;
 
     ifile.close();
 
     // time measure - finish
     finish = time(NULL);
     duration = (double) (finish - start);
-    cout << endl << "elapsed time:              " << duration << " seconds" << endl;
+    cout << endl << "elapsed time:              " << duration << " seconds" << endl << endl;
 
     // Write result file
     ofstream ofile(ofname);
     if (ofile.is_open()) {
         ofile << "Input file name:           " << ifname << endl << endl;
         ofile << "number of fingerprints:    " << count << endl;
-        ofile << "number of duplicates:      " << dup_count << endl;
-        ofile << "duplicate-ratio:           " << dup_ratio << endl << endl;
+        ofile << "number of duplicates:      " << dedup_count << endl;
+        ofile << "duplicate-ratio:           " << dedup_ratio << " %" << endl << endl;
 
         ofile << "elapsed time:              " << duration << " seconds" << endl;
     }
