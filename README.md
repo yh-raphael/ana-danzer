@@ -1,9 +1,9 @@
 # Ana-danzer
 
 ## How to run?
--> enter the command below.
+-> enter the command like below example.
 
-./ana-danzer
+./ana-danzer -i tracefile.txt -o result.txt
 
 
 ### Note
@@ -16,3 +16,5 @@ into whatever you want.
 
 
 Thanks for your reference!
+
+Updated on Aug.24, 2022.
