@@ -1,2 +1,8 @@
-tracefile-test.txt
+tracefile*
+!tracefile.txt
+
+result*
+!result.txt
+
+ana-danzer
 

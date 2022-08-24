@@ -8,14 +8,34 @@
 #include <unordered_map>
 #include <ctime>
 #include <cstring>
+#include <unistd.h>
 using namespace std;
 
 #define MAX_LINE_SIZE   200
 // #define NUM_LINE        254888
-const char* input_file_name = "tracefile-test.txt";
+// const char* input_file_name = "tracefile-test.txt";
 
-int main(void)
+int main(int argc, char *argv[])
 {
+    string ifname;
+    string ofname;
+    int opt;
+    while (-1 != (opt = getopt(argc, argv, "i:o:")))
+    {
+        switch (opt) {
+           case 'i':
+                ifname = optarg;
+                break;
+           case 'o':
+                ofname = optarg;
+                break;
+           default:
+                cerr << "Input Format Error!" << endl;
+                exit(0);
+        }
+    }
+    cout << "Input file name : " << ifname << endl;
+
     // time measure - start
     time_t start, finish;
     double duration;
@@ -38,7 +58,7 @@ int main(void)
     ifstream ifile;
     char line [MAX_LINE_SIZE];      // text buffer
 
-    ifile.open(input_file_name);
+    ifile.open(ifname);
     cout << "[1] Opened the input file successfully" << endl;
 
     int count = 0;
@@ -111,7 +131,7 @@ int main(void)
     for (auto x : umap)
     {
         if (x.second != 1) {
-            dup_count += x.second;
+            dup_count += (x.second - 1);
         }
     }
     dup_ratio = dup_count / (double) count;
@@ -127,6 +147,17 @@ int main(void)
     duration = (double) (finish - start);
     cout << endl << "elapsed time:              " << duration << " seconds" << endl;
 
+    // Write result file
+    ofstream ofile(ofname);
+    if (ofile.is_open()) {
+        ofile << "Input file name:           " << ifname << endl << endl;
+        ofile << "number of fingerprints:    " << count << endl;
+        ofile << "number of duplicates:      " << dup_count << endl;
+        ofile << "duplicate-ratio:           " << dup_ratio << endl << endl;
+
+        ofile << "elapsed time:              " << duration << " seconds" << endl;
+    }
+    ofile.close();
+
     return 0;
 } 
-

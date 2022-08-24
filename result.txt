@@ -1,0 +1,7 @@
+Input file name:           tracefile.txt
+
+number of fingerprints:    14
+number of duplicates:      5
+duplicate-ratio:           0.357143
+
+elapsed time:              0 seconds
