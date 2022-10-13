@@ -72,7 +72,7 @@ int main(int argc, char *argv[])
     // cout << line << endl;
     ifile.getline(line, sizeof(line));              // (2) 2nd line-> File Size: 1044000000
     // cout << line << endl;
-    
+
     do
     {
         ifile.getline(line, sizeof(line));          // (3) 3rd line-> Fingerprints: 
@@ -80,7 +80,8 @@ int main(int argc, char *argv[])
         // Iterate per-file portions
         while (ifile.getline(line, sizeof(line)))   // contents!
         {                                           // (1) 1st line-> File name: /home/safdar/dedupAnalyzer/test_dir/test.txt -> break;
-            // cout << "contents : " << line << endl;
+            string fp = string(line);
+            // cout << "contents : " << fp << ' ' << fp.length() << endl;
 
             char prefix[5] = "\0";
             strncpy(prefix, line, 4);
@@ -92,7 +93,12 @@ int main(int argc, char *argv[])
                 break;
             }
 
-            f_array.push_back(line);
+            if (fp.length() != 40) {
+                cout << "trash value detected" << endl;
+                continue;
+            }
+
+            f_array.push_back(fp);
             n_array.push_back(0);
 
             count ++;

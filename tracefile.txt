@@ -11,13 +11,19 @@ a9031a5134ef7f9a41eefc63e1cbb37ba8b05c3a
 8d3450b4fabfdfa2d1cf843e2b99e54664612d3e
 f85d5b2c936405fd363782b824604b5805df1659
 92b9f9c38060e5ae34353e852cc20dc725f0bea2
+
 File name: /home/safdar/dedupAnalyzer/test_dir/test.txt
 File Size: 5221
 Fingerprints:
 de96911d9ea3d37f6be667ec509c47cbd0b733a4
 199bf5a4a97833e6fa005daab3d3c429772de478
+
+??!@#$#%
+sdff
 File name: /home/safdar/dedupAnalyzer/test_dir/exam.txt
 File Size: 5221
 Fingerprints:
 de96911d9ea3d37f6be667ec509c47cbd0b733a4
 199bf5a4a97833e6fa005daab3d3c429772de478
+
+ff@#$%^
