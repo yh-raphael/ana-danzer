@@ -1,7 +1,7 @@
 Input file name:           tracefile.txt
 
-number of fingerprints:    14
+number of fingerprints:    15
 number of duplicates:      5
-dedup-ratio:               35.7143 %
+dedup-ratio:               33.3333 %
 
 elapsed time:              0 seconds

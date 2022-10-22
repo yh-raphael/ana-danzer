@@ -14,6 +14,11 @@ File name: /home/safdar/dedupAnalyzer/test_dir/test.txt, Size: 5221
 Fingerprints:
 de96911d9ea3d37f6be667ec509c47cbd0b733a4
 199bf5a4a97833e6fa005daab3d3c429772de478
+File name: /home/safdar/dedupAnalyzer/test_dir/__init__.py, Size: 0
+Fingerprints: 
+File Name: /scratch/jklee/dup_sample/AI/language/hpc43a04/.conda/envs/notebook/lib/python3.7/site-packages/google/protobuf/internal/import_test_package/inner_pb2.py, Size: 2316
+Fingerprints:
+b684738a127ff02494852cbd966ed206f7ad0dee
 File name: /home/safdar/dedupAnalyzer/test_dir/exam.txt, Size: 5221
 Fingerprints:
 de96911d9ea3d37f6be667ec509c47cbd0b733a4

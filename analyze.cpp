@@ -11,7 +11,7 @@
 #include <unistd.h>
 using namespace std;
 
-#define MAX_LINE_SIZE   200
+//#define MAX_LINE_SIZE   200
 // #define NUM_LINE        254888
 // const char* input_file_name = "tracefile-test.txt";
 
@@ -56,7 +56,8 @@ int main(int argc, char *argv[])
 
     // main start
     ifstream ifile;
-    char line [MAX_LINE_SIZE];      // text buffer
+    //char line [MAX_LINE_SIZE];      // text buffer
+    string line;
 
     ifile.open(ifname);
     cout << "[1] Opened the input file successfully" << endl;
@@ -68,28 +69,34 @@ int main(int argc, char *argv[])
 
     cout << "[2] Read and save fingerprints . . ." << endl;
     // Read file contents
-    ifile.getline(line, sizeof(line));              // 1st line-> File name: /home/safdar/dedupAnalyzer/test_dir/random_1M_1K.txt, Size: 1044000000
-    ifile.getline(line, sizeof(line));              // 2nd line-> Fingerprints: 
+    //ifile.getline(line, sizeof(line));              // 1st line-> File name: /home/safdar/dedupAnalyzer/test_dir/random_1M_1K.txt, Size: 1044000000
+    getline(ifile, line);
+    //ifile.getline(line, sizeof(line));              // 2nd line-> Fingerprints: 
+    getline(ifile, line);
     do
-    {   // Iterate per-file portions
-        while (ifile.getline(line, sizeof(line)))   // number of lines: 254,888
+    {   
+        ifile.clear();
+        // Iterate per-file portions
+        while (getline(ifile, line))   // number of lines: 254,888
         {                                           // 1 fingerprint size: 40 bytes
             // cout << line << endl;
             // string strr(line);
             // cout << strr.length() << endl;
             char prefix[5] = "\0";
-            strncpy(prefix, line, 4);
-            // cout  << prefix << endl;
+            strncpy(prefix, line.c_str(), 4);
+            cout  << prefix << endl;
             if(strcmp(prefix, "File") == 0) {                       // 1st line-> File name: /home/safdar/dedupAnalyzer/test_dir/random_1M_1K.txt, Size: 1044000000
-                // cout << "Just met new file contents!" << endl;
+                cout << "Just met new file contents!" << endl;
+                ifile.clear();
                 break;
             }
             f_array.push_back(line);
             n_array.push_back(0);
             count ++;
             // if (count == 10) break;
+            ifile.clear();
         }
-    } while (ifile.getline(line, sizeof(line)));                    // 2nd line-> Fingerprints: 
+    } while (getline(ifile, line));                    // 2nd line-> Fingerprints: 
     // break once meeting EOF
     cout << "Now, end-of-the tracefile!!" << endl;
 
