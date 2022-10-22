@@ -84,9 +84,9 @@ int main(int argc, char *argv[])
             // cout << strr.length() << endl;
             char prefix[5] = "\0";
             strncpy(prefix, line.c_str(), 4);
-            cout  << prefix << endl;
+            // cout  << prefix << endl;
             if(strcmp(prefix, "File") == 0) {                       // 1st line-> File name: /home/safdar/dedupAnalyzer/test_dir/random_1M_1K.txt, Size: 1044000000
-                cout << "Just met new file contents!" << endl;
+                // cout << "Just met new file contents!" << endl;
                 ifile.clear();
                 break;
             }
