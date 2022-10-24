@@ -1,6 +1,6 @@
 #!/bin/sh
 #PBS -V
-#PBS -N ana-danzer-ansys
+#PBS -N ana-danzer-abaqus
 #PBS -q debug
 #PBS -A etc
 #PBS -l select=1:ncpus=68
@@ -13,4 +13,5 @@ cd $PBS_O_WORKDIR
 module purge
 module load gcc/8.3.0
 
-./ana-danzer -i /scratch/jklee/dup_sample/tracefiles/4KB-Chunk-Tracefiles/tracefile-abaqus.txt -o result-4kb-abaqus.txt > log-4kb-abaqus.txt
+
+./ana-danzer -i /scratch/jklee/dup_sample/tracefiles/4KB-Chunk-Tracefiles/tracefile-abaqus.txt -o result-4kb-abaqus.txt
